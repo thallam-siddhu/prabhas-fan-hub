@@ -1,0 +1,775 @@
+/* =========================================
+   PRABHAS FAN HUB
+   WALLPAPERS PAGE - PREMIUM DESIGN
+========================================= */
+
+/* =========================================
+   WALLPAPERS HEADER
+========================================= */
+
+.wallpaper-header {
+    text-align: center;
+    padding: 65px 20px 40px;
+}
+
+.wallpaper-header h1 {
+    margin: 8px 0 0;
+    font-size: clamp(32px, 5vw, 48px);
+    letter-spacing: 3px;
+    line-height: 1.1;
+}
+
+.wallpaper-header p:not(.section-label) {
+    margin-top: 15px;
+    color: #999;
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+.section-label {
+    color: #d4af37;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+/* =========================================
+   CATEGORY BUTTONS
+========================================= */
+
+.wallpaper-categories {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    width: 90%;
+    max-width: 1200px;
+    margin: 10px auto 30px;
+}
+
+.category-button {
+    padding: 12px 22px;
+    border: 1px solid #303030;
+    border-radius: 8px;
+    background: #111;
+    color: #999;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease,
+        transform 0.25s ease;
+}
+
+.category-button:hover {
+    color: #fff;
+    border-color: #d4af37;
+    transform: translateY(-2px);
+}
+
+.category-button.active {
+    background: #d4af37;
+    border-color: #d4af37;
+    color: #000;
+}
+
+/* =========================================
+   CATEGORY TITLE
+========================================= */
+
+.category-title {
+    width: 90%;
+    max-width: 1200px;
+    margin: 25px auto 5px;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+/* =========================================
+   WALLPAPER SEARCH
+========================================= */
+
+.wallpaper-toolbar {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto 25px;
+}
+
+#wallpaperSearch {
+    display: block;
+    width: 100%;
+    max-width: 550px;
+    margin: 0 auto;
+    padding: 14px 18px;
+    border: 1px solid #303030;
+    border-radius: 8px;
+    outline: none;
+    background: #111;
+    color: #fff;
+    font-size: 14px;
+    transition:
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+#wallpaperSearch::placeholder {
+    color: #777;
+}
+
+#wallpaperSearch:focus {
+    border-color: #d4af37;
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+}
+
+/* =========================================
+   WALLPAPER STATUS
+========================================= */
+
+.wallpaper-status {
+    width: 90%;
+    max-width: 1200px;
+    margin: 15px auto;
+    color: #999;
+    font-size: 14px;
+    line-height: 1.6;
+    text-align: center;
+}
+
+/* =========================================
+   WALLPAPER CONTAINER
+========================================= */
+
+.wallpaper-container {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: start;
+    gap: 25px;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px 0 80px;
+}
+
+/* Compatibility with the wallpaper-gallery
+   class used by the alternative HTML layout. */
+
+.wallpaper-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: start;
+    gap: 25px;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px 0 80px;
+}
+
+/* =========================================
+   WALLPAPER CARD
+========================================= */
+
+.wallpaper-card {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    overflow: hidden;
+    padding: 0 0 20px;
+    border: 1px solid #272727;
+    border-radius: 16px;
+    background: linear-gradient(145deg, #151515, #0d0d0d);
+    text-align: center;
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.wallpaper-card:hover {
+    transform: translateY(-4px);
+    border-color: #d4af37;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+}
+
+/* =========================================
+   WALLPAPER IMAGE
+========================================= */
+
+.wallpaper-card img {
+    display: block;
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    background: #080808;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-user-drag: none;
+    transition: transform 0.4s ease;
+}
+
+.wallpaper-card:hover img {
+    transform: scale(1.03);
+}
+
+/* Compatibility with the alternative HTML layout */
+
+.wallpaper-image-wrap {
+    width: 100%;
+    overflow: hidden;
+    background: #080808;
+}
+
+.wallpaper-image-wrap img {
+    display: block;
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+}
+
+/* =========================================
+   WALLPAPER INFORMATION
+========================================= */
+
+.wallpaper-card h2,
+.wallpaper-card h3,
+.wallpaper-title {
+    margin: 17px 15px 10px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+.wallpaper-category {
+    margin: 0 12px 10px;
+    color: #d4af37;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.wallpaper-description {
+    margin: 0 15px 14px;
+    color: #999;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+/* =========================================
+   WALLPAPER DOWNLOAD BUTTON
+========================================= */
+
+.wallpaper-download,
+.download-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    gap: 8px;
+    margin: auto 8px 0;
+    padding: 13px 22px;
+    border: 1px solid #d4af37;
+    border-radius: 7px;
+    background: #d4af37;
+    color: #000;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease,
+        transform 0.25s ease;
+}
+
+.wallpaper-download:hover,
+.download-button:hover {
+    background: #fff;
+    border-color: #fff;
+    color: #000;
+    transform: translateY(-2px);
+}
+
+.wallpaper-download:active,
+.download-button:active {
+    transform: scale(0.97);
+}
+
+.wallpaper-download:disabled,
+.download-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* =========================================
+   EMPTY STATE
+========================================= */
+
+.empty-state {
+    width: 90%;
+    max-width: 600px;
+    margin: 20px auto 70px;
+    padding: 35px 20px;
+    border: 1px solid #272727;
+    border-radius: 14px;
+    background: #111;
+    text-align: center;
+}
+
+.empty-state h2 {
+    color: #d4af37;
+    font-size: 22px;
+}
+
+.empty-state p {
+    color: #999;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+/* =========================================
+   FULLSCREEN WALLPAPER VIEWER
+========================================= */
+
+body.wallpaper-viewer-open,
+body.preview-open {
+    overflow: hidden;
+}
+
+.wallpaper-viewer,
+.preview-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 99998;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    height: 100dvh;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.97);
+    animation: wallpaperViewerIn 0.25s ease;
+}
+
+/* Keep hidden viewers hidden even when display is set above. */
+
+.wallpaper-viewer[hidden],
+.preview-modal[hidden],
+.empty-state[hidden] {
+    display: none !important;
+}
+
+/* =========================================
+   VIEWER HEADER
+========================================= */
+
+.wallpaper-viewer-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    width: 100%;
+    padding: 16px 20px;
+    border-bottom: 1px solid #272727;
+    background: #0a0a0a;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* =========================================
+   VIEWER CLOSE BUTTON
+========================================= */
+
+.wallpaper-close,
+.preview-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    border: 1px solid #333;
+    border-radius: 50%;
+    background: #151515;
+    color: #fff;
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease,
+        transform 0.25s ease;
+}
+
+.wallpaper-close:hover,
+.preview-close:hover {
+    transform: rotate(90deg);
+    background: #d4af37;
+    border-color: #d4af37;
+    color: #000;
+}
+
+/* =========================================
+   VIEWER IMAGE AREA
+========================================= */
+
+.wallpaper-viewer-area {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 0;
+    overflow: hidden;
+    background: #000;
+}
+
+/* =========================================
+   FULLSCREEN IMAGE
+========================================= */
+
+.viewer-image {
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: 92%;
+    max-height: 88%;
+    object-fit: contain;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-user-drag: none;
+    transform: scale(1);
+    transform-origin: center center;
+    transition: transform 0.12s ease;
+    cursor: zoom-in;
+}
+
+/* =========================================
+   ALTERNATIVE PREVIEW MODAL
+========================================= */
+
+.preview-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    padding: 65px 20px 25px;
+}
+
+.preview-content > img {
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 70%;
+    object-fit: contain;
+}
+
+.preview-details {
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+}
+
+.preview-details h2 {
+    margin: 0 0 8px;
+    color: #fff;
+    font-size: 20px;
+}
+
+.preview-details p {
+    margin: 0 0 14px;
+    color: #999;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.preview-close {
+    position: absolute;
+    top: 18px;
+    right: 20px;
+}
+
+.preview-navigation {
+    position: absolute;
+    top: 50%;
+    z-index: 2;
+    width: 44px;
+    height: 44px;
+    border: 1px solid #444;
+    border-radius: 50%;
+    background: rgba(20, 20, 20, 0.9);
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    transform: translateY(-50%);
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.preview-navigation:hover:not(:disabled) {
+    border-color: #d4af37;
+    background: #d4af37;
+    color: #000;
+}
+
+.preview-navigation:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+.preview-previous {
+    left: 20px;
+}
+
+.preview-next {
+    right: 20px;
+}
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.wallpaper-footer {
+    padding: 25px 15px;
+    border-top: 1px solid #272727;
+    background: #080808;
+    color: #999;
+    font-size: 13px;
+    line-height: 1.8;
+    text-align: center;
+}
+
+.wallpaper-footer p {
+    margin: 5px 0;
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 900px) {
+    .wallpaper-container,
+    .wallpaper-gallery {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px;
+    }
+
+    .wallpaper-card img,
+    .wallpaper-image-wrap img {
+        height: 300px;
+    }
+
+    .wallpaper-card {
+        border-radius: 14px;
+    }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 650px) {
+    .wallpaper-header {
+        padding: 45px 15px 30px;
+    }
+
+    .wallpaper-header h1 {
+        font-size: 30px;
+        letter-spacing: 2px;
+    }
+
+    .wallpaper-header p:not(.section-label) {
+        font-size: 14px;
+    }
+
+    .wallpaper-toolbar,
+    .wallpaper-categories {
+        width: 92%;
+    }
+
+    .wallpaper-categories {
+        gap: 8px;
+        margin-bottom: 20px;
+    }
+
+    .category-button {
+        flex: 1 1 auto;
+        min-width: 125px;
+        padding: 11px 12px;
+        font-size: 12px;
+    }
+
+    .category-title {
+        width: 92%;
+        margin-top: 20px;
+        font-size: 16px;
+    }
+
+    .wallpaper-status {
+        width: 92%;
+        font-size: 13px;
+    }
+
+    .wallpaper-container,
+    .wallpaper-gallery {
+        grid-template-columns: 1fr;
+        width: 92%;
+        gap: 20px;
+        padding-top: 10px;
+        padding-bottom: 60px;
+    }
+
+    .wallpaper-card {
+        border-radius: 14px;
+    }
+
+    .wallpaper-card img,
+    .wallpaper-image-wrap img {
+        height: 300px;
+    }
+
+    .wallpaper-card h2,
+    .wallpaper-card h3,
+    .wallpaper-title {
+        font-size: 15px;
+    }
+
+    .wallpaper-download,
+    .download-button {
+        padding: 12px 20px;
+        font-size: 12px;
+    }
+
+    .wallpaper-viewer-header {
+        padding: 12px 15px;
+        font-size: 12px;
+    }
+
+    .wallpaper-close,
+    .preview-close {
+        width: 36px;
+        height: 36px;
+        font-size: 22px;
+    }
+
+    .preview-close {
+        top: 12px;
+        right: 12px;
+    }
+
+    .preview-content {
+        gap: 12px;
+        padding: 60px 14px 20px;
+    }
+
+    .preview-content > img {
+        max-height: 62%;
+    }
+
+    .preview-details h2 {
+        font-size: 17px;
+    }
+
+    .preview-navigation {
+        top: 35%;
+        width: 36px;
+        height: 36px;
+        font-size: 16px;
+    }
+
+    .preview-previous {
+        left: 8px;
+    }
+
+    .preview-next {
+        right: 8px;
+    }
+
+    .wallpaper-footer {
+        padding: 20px 12px;
+        font-size: 12px;
+    }
+}
+
+/* =========================================
+   SMALL PHONES
+========================================= */
+
+@media (max-width: 400px) {
+    .wallpaper-header h1 {
+        font-size: 26px;
+        letter-spacing: 1.5px;
+    }
+
+    .category-button {
+        min-width: 0;
+        padding: 10px 8px;
+        font-size: 11px;
+    }
+
+    .category-title {
+        font-size: 15px;
+    }
+
+    .wallpaper-card img,
+    .wallpaper-image-wrap img {
+        height: 280px;
+    }
+
+    .wallpaper-card {
+        border-radius: 12px;
+    }
+
+    .preview-content > img {
+        max-height: 58%;
+    }
+}
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* =========================================
+   VIEWER ANIMATION
+========================================= */
+
+@keyframes wallpaperViewerIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}

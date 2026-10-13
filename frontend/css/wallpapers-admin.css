@@ -1,0 +1,496 @@
+
+/* =========================================
+   PRABHAS FAN HUB - WALLPAPERS ADMIN
+========================================= */
+
+:root {
+    --wallpaper-gold: #d4af37;
+    --wallpaper-gold-light: #f5d778;
+    --wallpaper-bg: #080808;
+    --wallpaper-card: #121212;
+    --wallpaper-border: rgba(212, 175, 55, 0.25);
+    --wallpaper-text: #f5f5f5;
+    --wallpaper-muted: #a6a6a6;
+    --wallpaper-danger: #ff5252;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: var(--wallpaper-bg);
+    color: var(--wallpaper-text);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+button,
+input,
+textarea {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+/* =========================================
+   PAGE LAYOUT
+========================================= */
+
+.wallpaper-admin-page {
+    width: min(1180px, 92%);
+    margin: 0 auto;
+    padding: 35px 0 60px;
+    min-height: 100vh;
+    animation: wallpaperFadeIn 0.5s ease;
+}
+
+@keyframes wallpaperFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =========================================
+   HEADER
+========================================= */
+
+.wallpaper-admin-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 26px;
+    margin-bottom: 28px;
+    border: 1px solid var(--wallpaper-border);
+    border-radius: 20px;
+    background:
+        radial-gradient(
+            circle at top right,
+            rgba(212, 175, 55, 0.13),
+            transparent 45%
+        ),
+        var(--wallpaper-card);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
+}
+
+.wallpaper-admin-header h1 {
+    margin: 8px 0;
+    color: var(--wallpaper-gold-light);
+    font-size: clamp(25px, 4vw, 36px);
+    line-height: 1.2;
+}
+
+.wallpaper-admin-header p {
+    color: var(--wallpaper-muted);
+    line-height: 1.6;
+}
+
+.wallpaper-admin-header .owner-label {
+    color: var(--wallpaper-gold);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
+/* =========================================
+   NAVIGATION BUTTONS
+========================================= */
+
+.wallpaper-admin-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 22px;
+}
+
+.wallpaper-nav-button {
+    min-height: 46px;
+    padding: 12px 22px;
+    border: 1px solid var(--wallpaper-border);
+    border-radius: 10px;
+    background: #171717;
+    color: var(--wallpaper-text);
+    font-weight: 700;
+}
+
+.wallpaper-nav-button:hover,
+.wallpaper-nav-button.active {
+    background: var(--wallpaper-gold);
+    color: #080808;
+    border-color: var(--wallpaper-gold);
+    box-shadow: 0 5px 20px rgba(212, 175, 55, 0.18);
+}
+
+/* =========================================
+   CONTENT SECTIONS
+========================================= */
+
+.wallpaper-admin-section {
+    padding: 28px;
+    margin-bottom: 25px;
+    border: 1px solid var(--wallpaper-border);
+    border-radius: 18px;
+    background: var(--wallpaper-card);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.wallpaper-admin-section[hidden] {
+    display: none !important;
+}
+
+.wallpaper-admin-section h2 {
+    margin: 0 0 24px;
+    color: var(--wallpaper-gold-light);
+    font-size: 23px;
+}
+
+/* =========================================
+   FORM
+========================================= */
+
+#wallpaperForm {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 720px;
+}
+
+#wallpaperForm label {
+    margin-top: 8px;
+    color: #e7e7e7;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+#wallpaperForm input[type="text"],
+#wallpaperForm textarea {
+    width: 100%;
+    padding: 14px 15px;
+    color: var(--wallpaper-text);
+    background: #090909;
+    border: 1px solid #333;
+    border-radius: 10px;
+    outline: none;
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+#wallpaperForm input[type="text"]:focus,
+#wallpaperForm textarea:focus {
+    border-color: var(--wallpaper-gold);
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+}
+
+#wallpaperForm textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+#wallpaperForm input[type="file"] {
+    width: 100%;
+    padding: 14px;
+    color: var(--wallpaper-muted);
+    background: #090909;
+    border: 1px dashed #555;
+    border-radius: 10px;
+}
+
+#wallpaperForm input[type="file"]::file-selector-button {
+    margin-right: 12px;
+    padding: 9px 13px;
+    border: 0;
+    border-radius: 7px;
+    background: var(--wallpaper-gold);
+    color: #080808;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.wallpaper-help {
+    margin: 0;
+    color: var(--wallpaper-muted);
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+/* =========================================
+   COMMON BUTTON
+========================================= */
+
+.wallpaper-admin-page .manage-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 12px 20px;
+    border: 1px solid var(--wallpaper-gold);
+    border-radius: 9px;
+    background: var(--wallpaper-gold);
+    color: #080808;
+    font-weight: 700;
+    text-align: center;
+}
+
+.wallpaper-admin-page .manage-button:hover {
+    background: var(--wallpaper-gold-light);
+    box-shadow: 0 5px 18px rgba(212, 175, 55, 0.18);
+    transform: translateY(-2px);
+}
+
+.wallpaper-admin-page button:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+    transform: none;
+}
+
+/* =========================================
+   IMAGE PREVIEW
+========================================= */
+
+.wallpaper-preview-container {
+    width: min(100%, 420px);
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid var(--wallpaper-border);
+    border-radius: 12px;
+    background: #090909;
+}
+
+.wallpaper-preview-container[hidden] {
+    display: none !important;
+}
+
+.wallpaper-preview-container img {
+    display: block;
+    width: 100%;
+    max-height: 500px;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+/* =========================================
+   STATUS MESSAGES
+========================================= */
+
+.wallpaper-status {
+    display: none;
+    padding: 14px 16px;
+    margin: 0 0 20px;
+    border: 1px solid var(--wallpaper-border);
+    border-radius: 10px;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+.wallpaper-status.success {
+    display: block;
+    color: #a8e6b0;
+    border-color: rgba(75, 190, 100, 0.4);
+    background: rgba(75, 190, 100, 0.08);
+}
+
+.wallpaper-status.error {
+    display: block;
+    color: #ffaaaa;
+    border-color: rgba(255, 82, 82, 0.4);
+    background: rgba(255, 82, 82, 0.08);
+}
+
+.wallpaper-status.info {
+    display: block;
+    color: var(--wallpaper-gold-light);
+    background: rgba(212, 175, 55, 0.07);
+}
+
+/* =========================================
+   WALLPAPER LIST
+========================================= */
+
+.wallpaper-list-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.wallpaper-list-heading h2 {
+    margin-bottom: 15px;
+}
+
+#wallpaperCount {
+    margin: 0 0 20px;
+    color: var(--wallpaper-muted);
+    font-size: 14px;
+}
+
+.wallpaper-admin-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.wallpaper-admin-card {
+    min-width: 0;
+    overflow: hidden;
+    border: 1px solid var(--wallpaper-border);
+    border-radius: 14px;
+    background: #0b0b0b;
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.wallpaper-admin-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--wallpaper-gold);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+}
+
+.wallpaper-admin-card img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    background: #171717;
+}
+
+.wallpaper-admin-card-content {
+    padding: 16px;
+}
+
+.wallpaper-admin-card-content h3 {
+    margin: 0 0 8px;
+    color: var(--wallpaper-gold-light);
+    font-size: 17px;
+    overflow-wrap: anywhere;
+}
+
+.wallpaper-admin-card-content p {
+    margin: 7px 0;
+    color: var(--wallpaper-muted);
+    font-size: 13px;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+.wallpaper-admin-card .wallpaper-category {
+    color: var(--wallpaper-gold);
+    font-weight: 700;
+}
+
+.wallpaper-delete-button {
+    width: 100%;
+    min-height: 42px;
+    margin-top: 12px;
+    padding: 10px 14px;
+    border: 1px solid rgba(255, 82, 82, 0.5);
+    border-radius: 8px;
+    background: rgba(255, 82, 82, 0.1);
+    color: #ff8a8a;
+    font-weight: 700;
+}
+
+.wallpaper-delete-button:hover {
+    background: var(--wallpaper-danger);
+    color: #fff;
+}
+
+/* =========================================
+   EMPTY STATE
+========================================= */
+
+.wallpaper-empty-state {
+    grid-column: 1 / -1;
+    padding: 35px 20px;
+    border: 1px dashed #444;
+    border-radius: 12px;
+    color: var(--wallpaper-muted);
+    text-align: center;
+    line-height: 1.8;
+}
+
+/* =========================================
+   RESPONSIVE DESIGN
+========================================= */
+
+@media (max-width: 850px) {
+    .wallpaper-admin-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .wallpaper-admin-page {
+        width: 94%;
+        padding-top: 18px;
+    }
+
+    .wallpaper-admin-header {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 20px;
+        border-radius: 15px;
+    }
+
+    .wallpaper-admin-header .manage-button {
+        width: 100%;
+    }
+
+    .wallpaper-admin-section {
+        padding: 18px;
+    }
+
+    .wallpaper-admin-section h2 {
+        font-size: 20px;
+    }
+
+    .wallpaper-admin-nav {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 9px;
+    }
+
+    .wallpaper-nav-button {
+        padding: 12px 8px;
+        font-size: 13px;
+    }
+
+    .wallpaper-admin-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .wallpaper-admin-card img {
+        aspect-ratio: 4 / 5;
+    }
+
+    #wallpaperForm .manage-button {
+        width: 100%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}

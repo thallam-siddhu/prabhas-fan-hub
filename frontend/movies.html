@@ -1,0 +1,693 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#080808">
+    <meta name="description" content="Explore Prabhas movies on PRABHAS FAN HUB.">
+
+    <title>Prabhas Movies | PRABHAS FAN HUB</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/movies.css">
+    <link rel="stylesheet" href="css/loading.css">
+
+    <style>
+        :root {
+            --gold: #d4af37;
+            --gold-light: #ffe58a;
+            --black: #080808;
+            --text: #f5f5f5;
+            --muted: #a5a5a5;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: var(--black);
+            color: var(--text);
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        /* NAVIGATION */
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 12px 4%;
+            background: rgba(8, 8, 8, 0.97);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            backdrop-filter: blur(12px);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-shrink: 0;
+        }
+
+        .brand-logo {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        .brand-name {
+            color: var(--gold-light);
+            font-size: 15px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            white-space: nowrap;
+        }
+
+        .navbar nav {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            flex-wrap: wrap;
+            gap: 18px;
+        }
+
+        .navbar nav a {
+            color: #e5e5e5;
+            text-decoration: none;
+            font-size: 13px;
+            transition: color 0.2s ease;
+        }
+
+        .navbar nav a:hover,
+        .navbar nav a.active {
+            color: var(--gold-light);
+        }
+
+        /* PAGE HEADER */
+
+        .movies-header {
+            text-align: center;
+            padding: 42px 15px 24px;
+        }
+
+        .section-label {
+            color: var(--gold);
+            font-size: 11px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            margin-bottom: 12px;
+        }
+
+        .movies-header h1 {
+            margin: 0;
+            font-size: clamp(29px, 5vw, 48px);
+            font-weight: 900;
+            letter-spacing: 2px;
+            background: linear-gradient(
+                90deg,
+                #b68d20,
+                #fff0a8,
+                #d4af37
+            );
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .movies-header > p:last-child {
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.6;
+            margin-top: 12px;
+        }
+
+        /* SEARCH */
+
+        .movie-search-area {
+            width: min(500px, 92%);
+            margin: 10px auto 25px;
+        }
+
+        .movie-search {
+            width: 100%;
+            padding: 12px 15px;
+            color: white;
+            background: #151515;
+            border: 1px solid #393939;
+            border-radius: 10px;
+            outline: none;
+            font-size: 14px;
+        }
+
+        .movie-search:focus {
+            border-color: var(--gold);
+            box-shadow: 0 0 12px rgba(212, 175, 55, 0.15);
+        }
+
+        .movie-search::placeholder {
+            color: #888;
+        }
+
+        /* MOVIE LIST */
+
+        .movie-container {
+            width: 94%;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 10px 0 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 18px;
+            overflow: visible;
+        }
+
+        /* MOVIE CARD */
+
+        .movie-card {
+            position: relative;
+            width: 520px;
+            max-width: calc(100% - 145px);
+            min-width: 0;
+            min-height: 155px;
+
+            display: flex;
+            align-items: center;
+            gap: 14px;
+
+            padding: 10px;
+            background: linear-gradient(145deg, #191919, #0d0d0d);
+            border: 1px solid #292929;
+            border-radius: 12px;
+            overflow: visible;
+
+            transition: border-color 0.25s ease,
+                        box-shadow 0.25s ease;
+        }
+
+        .movie-card:hover {
+            border-color: var(--gold);
+            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.35);
+        }
+
+        /* POSTER */
+
+        .movie-poster {
+            display: block;
+            width: 90px;
+            height: 135px;
+            flex: 0 0 90px;
+            object-fit: cover;
+            background: #080808;
+            border-radius: 8px;
+        }
+
+        /* MOVIE INFORMATION */
+
+        .movie-info {
+            flex: 1;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .movie-info h2 {
+            margin: 0 0 7px;
+            color: #fff;
+            font-size: 17px;
+            line-height: 1.3;
+            overflow-wrap: anywhere;
+        }
+
+        .movie-info p {
+            margin: 4px 0;
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 1.5;
+            overflow-wrap: anywhere;
+        }
+
+        .movie-info .movie-meta {
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        /* WATCH BUTTON OUTSIDE CARD ON THE RIGHT */
+
+        #movieContainer .movie-card .watch-button {
+            position: absolute !important;
+            left: calc(100% + 16px) !important;
+            right: auto !important;
+            top: 50% !important;
+            bottom: auto !important;
+
+            transform: translateY(-50%) !important;
+
+            display: inline-flex !important;
+            align-items: center;
+            justify-content: center;
+
+            width: 125px !important;
+            min-width: 125px;
+            min-height: 42px;
+            margin: 0 !important;
+            padding: 10px;
+
+            color: #111 !important;
+            background: linear-gradient(
+                110deg,
+                #b68d20,
+                #ffe58a,
+                #d4af37
+            ) !important;
+
+            border: none !important;
+            border-radius: 8px;
+
+            font-size: 11px;
+            font-weight: 800;
+            white-space: nowrap;
+            cursor: pointer;
+            z-index: 5;
+
+            transition: filter 0.2s ease,
+                        box-shadow 0.2s ease;
+        }
+
+        #movieContainer .movie-card .watch-button:hover {
+            transform: translateY(-50%) !important;
+            filter: brightness(1.1);
+            box-shadow: 0 4px 14px rgba(212, 175, 55, 0.2);
+        }
+
+        /* STATUS MESSAGES */
+
+        .movie-status {
+            width: 100%;
+            padding: 35px 10px;
+            color: var(--muted);
+            text-align: center;
+            line-height: 1.7;
+        }
+
+        .movie-status strong {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--gold-light);
+            font-size: 18px;
+        }
+
+        /* VIDEO PLAYER */
+
+        .watch-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            background: #000;
+        }
+
+        .watch-modal.open {
+            display: flex;
+        }
+
+        .watch-player {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            background: #000;
+        }
+
+        .watch-toolbar {
+            min-height: 52px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 6px 12px;
+            color: white;
+            background: #101010;
+        }
+
+        .watch-title {
+            overflow: hidden;
+            color: var(--gold-light);
+            font-size: 14px;
+            font-weight: bold;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .watch-close {
+            flex-shrink: 0;
+            width: 38px;
+            height: 38px;
+            color: white;
+            background: #282828;
+            border: 1px solid #444;
+            border-radius: 50%;
+            font-size: 23px;
+            cursor: pointer;
+        }
+
+        .watch-close:hover {
+            color: var(--gold-light);
+            border-color: var(--gold);
+        }
+
+        .watch-frame-container {
+            position: relative;
+            flex: 1;
+            min-height: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #000;
+        }
+
+        .watch-frame {
+            width: 100%;
+            height: 100%;
+            border: none;
+            background: #000;
+        }
+
+        .watch-modal:fullscreen {
+            padding: 0;
+        }
+
+        body.player-open {
+            overflow: hidden;
+        }
+
+        /* TABLET */
+
+        @media (max-width: 800px) {
+            .navbar {
+                gap: 12px;
+            }
+
+            .navbar nav {
+                gap: 12px;
+            }
+
+            .movie-card {
+                width: 450px;
+                max-width: calc(100% - 125px);
+                min-height: 145px;
+                gap: 10px;
+                padding: 9px;
+            }
+
+            .movie-poster {
+                width: 80px;
+                height: 120px;
+                flex-basis: 80px;
+            }
+
+            .movie-info h2 {
+                font-size: 15px;
+            }
+
+            .movie-info p {
+                font-size: 11px;
+            }
+
+            #movieContainer .movie-card .watch-button {
+                left: calc(100% + 12px) !important;
+                width: 110px !important;
+                min-width: 110px;
+                min-height: 38px;
+                font-size: 10px;
+            }
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 500px) {
+            .navbar {
+                flex-direction: column;
+                gap: 12px;
+                padding: 10px 3%;
+            }
+
+            .brand-logo {
+                width: 36px;
+                height: 36px;
+            }
+
+            .brand-name {
+                font-size: 14px;
+            }
+
+            .navbar nav {
+                justify-content: center;
+                gap: 14px;
+            }
+
+            .navbar nav a {
+                font-size: 12px;
+            }
+
+            .movies-header {
+                padding: 35px 12px 20px;
+            }
+
+            .movies-header h1 {
+                font-size: 27px;
+                letter-spacing: 1px;
+            }
+
+            .movies-header > p:last-child {
+                font-size: 13px;
+            }
+
+            .section-label {
+                font-size: 10px;
+                letter-spacing: 2px;
+            }
+
+            .movie-container {
+                width: 96%;
+                gap: 16px;
+            }
+
+            .movie-card {
+                width: 100%;
+                max-width: calc(100% - 95px);
+                min-height: 115px;
+                gap: 8px;
+                padding: 8px;
+            }
+
+            .movie-poster {
+                width: 65px;
+                height: 98px;
+                flex-basis: 65px;
+            }
+
+            .movie-info h2 {
+                font-size: 13px;
+                margin-bottom: 5px;
+            }
+
+            .movie-info p {
+                font-size: 10px;
+                line-height: 1.4;
+            }
+
+            #movieContainer .movie-card .watch-button {
+                left: calc(100% + 8px) !important;
+                width: 82px !important;
+                min-width: 82px;
+                min-height: 34px;
+                padding: 8px 3px;
+                font-size: 9px;
+            }
+
+            .watch-modal {
+                padding: 0;
+            }
+
+            .watch-toolbar {
+                min-height: 46px;
+                padding: 5px 10px;
+            }
+        }
+
+        /* VERY SMALL PHONES */
+
+        @media (max-width: 350px) {
+            .navbar nav {
+                gap: 10px;
+            }
+
+            .navbar nav a {
+                font-size: 11px;
+            }
+
+            .movie-card {
+                max-width: calc(100% - 82px);
+                gap: 6px;
+                padding: 6px;
+            }
+
+            .movie-poster {
+                width: 55px;
+                height: 83px;
+                flex-basis: 55px;
+            }
+
+            .movie-info h2 {
+                font-size: 12px;
+            }
+
+            .movie-info p {
+                font-size: 9px;
+            }
+
+            #movieContainer .movie-card .watch-button {
+                left: calc(100% + 6px) !important;
+                width: 72px !important;
+                min-width: 72px;
+                min-height: 30px;
+                font-size: 8px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- LOADING SCREEN -->
+
+    <div id="appLoader" class="app-loader">
+        <div class="loader-content">
+            <div class="loader-ring"></div>
+            <p>PRABHAS FAN HUB</p>
+            <div class="loading-line">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- NAVIGATION -->
+
+    <header class="navbar">
+        <div class="brand">
+            <img
+                src="assets/app/logo.png"
+                alt="PRABHAS FAN HUB Logo"
+                class="brand-logo"
+            >
+            <span class="brand-name">PRABHAS FAN HUB</span>
+        </div>
+
+        <nav aria-label="Main navigation">
+            <a href="index.html">Home</a>
+            <a href="movies.html" class="active">Movies</a>
+            <a href="songs.html">Songs</a>
+            <a href="wallpapers.html">Wallpapers</a>
+            <a href="news.html">News</a>
+        </nav>
+    </header>
+
+    <!-- MOVIES PAGE -->
+
+    <main>
+        <section class="movies-header">
+            <p class="section-label">THE REBEL STAR COLLECTION</p>
+            <h1>PRABHAS MOVIES</h1>
+            <p>Explore the cinematic journey of India's beloved superstar.</p>
+        </section>
+
+        <!-- SEARCH -->
+
+        <div class="movie-search-area">
+            <input
+                type="search"
+                id="movieSearch"
+                class="movie-search"
+                placeholder="Search movies by name..."
+                aria-label="Search movies"
+                autocomplete="off"
+            >
+        </div>
+
+        <!-- MOVIES LOAD HERE -->
+
+        <section
+            id="movieContainer"
+            class="movie-container"
+            aria-live="polite"
+            aria-label="Prabhas movie collection"
+        >
+            <div class="movie-status">
+                <strong>Loading Movies...</strong>
+                Please wait while we load the collection.
+            </div>
+        </section>
+    </main>
+
+    <!-- VIDEO PLAYER MODAL -->
+
+    <div
+        id="watchModal"
+        class="watch-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Movie player"
+    >
+        <div class="watch-player">
+
+            <div class="watch-toolbar">
+                <span id="watchTitle" class="watch-title">
+                    PRABHAS FAN HUB
+                </span>
+
+                <button
+                    type="button"
+                    id="watchClose"
+                    class="watch-close"
+                    aria-label="Close video player"
+                    title="Close player"
+                >
+                    &times;
+                </button>
+            </div>
+
+            <div class="watch-frame-container">
+                <iframe
+                    id="watchFrame"
+                    class="watch-frame"
+                    src="about:blank"
+                    title="Movie video player"
+                    allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+                    allowfullscreen
+                ></iframe>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT -->
+
+    <script src="js/movies.js"></script>
+    <script src="js/loading.js"></script>
+
+</body>
+</html>

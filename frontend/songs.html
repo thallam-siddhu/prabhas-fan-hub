@@ -1,0 +1,145 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Prabhas Fan Hub | Songs</title>
+    <meta name="theme-color" content="#080808">
+    <meta name="description" content="Listen to Prabhas movie songs on Prabhas Fan Hub.">
+
+    <link rel="icon" type="image/png" href="assets/app/logo.png">
+    <link rel="shortcut icon" type="image/png" href="assets/app/logo.png">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/songs.css">
+    <link rel="stylesheet" href="css/loading.css">
+</head>
+
+<body class="songs-page">
+
+    <!-- Loading animation -->
+    <div id="appLoader" class="app-loader">
+        <div class="loader-content">
+            <div class="loader-ring"></div>
+            <p>PRABHAS FAN HUB</p>
+            <div class="loading-line"><span></span></div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <header class="navbar">
+        <a class="logo songs-logo" href="index.html">
+            <img src="assets/app/logo.png" alt="Prabhas Fan Hub logo">
+            <span>PRABHAS FAN HUB</span>
+        </a>
+
+        <nav aria-label="Main navigation">
+            <a href="index.html">Home</a>
+            <a href="movies.html">Movies</a>
+            <a href="songs.html" class="active" aria-current="page">Songs</a>
+            <a href="wallpapers.html">Wallpapers</a>
+            <a href="news.html">News</a>
+        </nav>
+    </header>
+
+    <!-- Main content -->
+    <main class="songs-main">
+
+        <section class="songs-intro">
+            <p class="songs-eyebrow">THE REBEL STAR COLLECTION</p>
+            <h1>PRABHAS <span>SONGS</span></h1>
+            <p class="songs-description">
+                Feel the music. Relive the moments.
+                Experience the sound of Prabhas.
+            </p>
+
+            <label class="songs-search-wrap" for="songSearch">
+                <span aria-hidden="true">⌕</span>
+                <input
+                    type="search"
+                    id="songSearch"
+                    placeholder="Search songs by name or movie..."
+                    autocomplete="off"
+                    aria-label="Search songs by name or movie"
+                >
+                <button type="button" id="clearSongSearch"
+                    aria-label="Clear search" hidden>×</button>
+            </label>
+
+            <div class="songs-list-heading">
+                <h2>Music Collection</h2>
+                <span id="songCount">Loading songs...</span>
+            </div>
+        </section>
+
+        <!-- Existing JavaScript renders song cards here -->
+        <section id="songContainer" class="song-container"
+            aria-label="Songs collection">
+            <div class="songs-loading">
+                <p>Loading songs...</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Mini music player: IDs preserved -->
+    <footer class="mini-player" id="miniPlayer">
+        <div class="mini-player-inner">
+
+            <div class="player-song-info">
+                <img
+                    id="currentSongCover"
+                    class="player-cover"
+                    src="assets/app/logo.png"
+                    alt="Current song cover"
+                >
+
+                <div class="player-song-text">
+                    <span class="now-playing-label">NOW PLAYING</span>
+                    <strong id="currentSongTitle">Select a song</strong>
+                    <span id="currentSongMovie">Prabhas Fan Hub</span>
+                </div>
+            </div>
+
+            <div class="player-controls">
+                <button type="button" id="previousBtn"
+                    class="player-control-btn"
+                    aria-label="Previous song" title="Previous song">|◀</button>
+
+                <button type="button" id="playPauseBtn"
+                    class="player-control-btn play-pause-btn"
+                    aria-label="Play or pause" title="Play or pause">▶</button>
+
+                <button type="button" id="nextBtn"
+                    class="player-control-btn"
+                    aria-label="Next song" title="Next song">▶|</button>
+            </div>
+
+            <div class="player-progress">
+                <span id="currentTime" class="player-time">0:00</span>
+                <input type="range" id="progressBar"
+                    min="0" max="100" value="0" step="0.1"
+                    aria-label="Song progress">
+                <span id="duration" class="player-time">0:00</span>
+            </div>
+
+            <div class="player-volume">
+                <span aria-hidden="true">♫</span>
+                <input type="range" id="volumeControl"
+                    min="0" max="1" value="0.8" step="0.01"
+                    aria-label="Volume">
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- Keep the existing script order -->
+    <script src="js/app.js"></script>
+    <script src="js/songs.js"></script>
+    <script src="js/song-page.js"></script>
+    <script src="js/loading.js"></script>
+
+</body>
+</html>

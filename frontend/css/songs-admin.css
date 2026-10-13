@@ -1,0 +1,261 @@
+
+/* =========================================
+   SONGS ADMIN - PRABHAS FAN HUB
+========================================= */
+
+.song-admin-navigation {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 25px 0;
+}
+
+.song-admin-section {
+    width: 100%;
+    margin-top: 24px;
+}
+
+.song-admin-section[hidden],
+.song-admin-navigation [hidden] {
+    display: none !important;
+}
+
+.song-admin-section h2 {
+    margin: 0 0 22px;
+    color: #d4af37;
+    font-size: 24px;
+}
+
+
+/* =========================================
+   SONG FORM
+========================================= */
+
+#songForm {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    max-width: 700px;
+}
+
+#songForm label {
+    margin-top: 8px;
+    color: #f1f1f1;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+#songForm input[type="text"],
+#songForm textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 13px 14px;
+    border: 1px solid #353535;
+    border-radius: 8px;
+    outline: none;
+    background: #101010;
+    color: #ffffff;
+    font: inherit;
+}
+
+#songForm input[type="text"]:focus,
+#songForm textarea:focus {
+    border-color: #d4af37;
+}
+
+#songForm textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+#songForm input[type="file"] {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px;
+    border: 1px solid #353535;
+    border-radius: 8px;
+    background: #101010;
+    color: #dddddd;
+    font-size: 13px;
+}
+
+#songForm input[type="file"]::file-selector-button {
+    margin-right: 12px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 6px;
+    background: #d4af37;
+    color: #111111;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#songForm small {
+    color: #a9a9a9;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+#songForm .manage-button {
+    width: 100%;
+    max-width: 260px;
+    margin-top: 8px;
+}
+
+#songForm .manage-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+
+/* =========================================
+   STATUS MESSAGES
+========================================= */
+
+.song-form-message {
+    min-height: 20px;
+    margin: 12px 0;
+    overflow-wrap: anywhere;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+
+/* =========================================
+   SONG LIST
+========================================= */
+
+.songs-admin-list {
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(min(100%, 300px), 1fr)
+    );
+    gap: 20px;
+    width: 100%;
+}
+
+.song-admin-card {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    overflow: hidden;
+    border: 1px solid #303030;
+    border-radius: 12px;
+    background: #101010;
+}
+
+.song-admin-cover {
+    display: block;
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+    background: #181818;
+}
+
+.song-admin-details {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 16px;
+    min-width: 0;
+}
+
+.song-admin-details h3 {
+    margin: 0;
+    color: #d4af37;
+    font-size: 19px;
+    overflow-wrap: anywhere;
+}
+
+.song-admin-details p {
+    margin: 0;
+    color: #c7c7c7;
+    font-size: 14px;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+.song-admin-details audio {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    margin-top: 8px;
+}
+
+.song-admin-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+.song-admin-actions .manage-button {
+    flex: 1;
+    min-width: 90px;
+}
+
+.song-admin-actions .manage-button:last-child {
+    border-color: #8b3333;
+}
+
+
+/* =========================================
+   BUTTON INTERACTIONS
+========================================= */
+
+.song-admin-navigation .manage-button,
+.song-admin-actions .manage-button,
+#songForm .manage-button {
+    cursor: pointer;
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        opacity 0.2s ease;
+}
+
+.song-admin-navigation .manage-button:hover,
+.song-admin-actions .manage-button:hover,
+#songForm .manage-button:hover {
+    transform: translateY(-1px);
+}
+
+
+/* =========================================
+   RESPONSIVE DESIGN
+========================================= */
+
+@media (max-width: 600px) {
+
+    .song-admin-navigation {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
+    .song-admin-navigation .manage-button {
+        width: 100%;
+        min-width: 0;
+        padding: 12px 8px;
+        font-size: 13px;
+    }
+
+    .song-admin-section h2 {
+        font-size: 21px;
+    }
+
+    .song-admin-cover {
+        height: 170px;
+    }
+
+    #songForm .manage-button {
+        max-width: 100%;
+    }
+
+    .song-admin-details {
+        padding: 13px;
+    }
+
+}

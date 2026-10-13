@@ -1,0 +1,302 @@
+/* =========================================
+PRABHAS FAN HUB
+MOVIE DETAILS - PREMIUM DESIGN
+========================================= */
+
+.movie-details {
+width: 90%;
+max-width: 1100px;
+
+margin: 50px auto 80px;
+padding: 20px 0;
+
+}
+
+/* =========================================
+BACK BUTTON
+========================================= */
+
+.back-button {
+display: inline-flex;
+align-items: center;
+gap: 8px;
+
+margin-bottom: 35px;
+
+color: #999;
+text-decoration: none;
+
+font-size: 15px;
+
+transition:
+    color 0.25s ease,
+    transform 0.25s ease;
+
+}
+
+.back-button {
+color: #fff;
+transform: translateX(-4px);
+}
+
+/* =========================================
+MOVIE DETAILS
+========================================= */
+
+.details-wrapper {
+display: grid;
+
+grid-template-columns: 320px 1fr;
+
+gap: 50px;
+
+align-items: start;
+
+}
+
+/* =========================================
+MOVIE POSTER
+========================================= */
+
+.details-poster {
+position: relative;
+}
+
+.details-poster img {
+width: 100%;
+
+display: block;
+
+border-radius: 14px;
+
+border: 1px solid #292929;
+
+box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.55);
+
+transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+
+}
+
+.details-poster img {
+transform: translateY(-5px);
+
+box-shadow:
+    0 25px 60px rgba(0, 0, 0, 0.7);
+
+}
+
+/* =========================================
+MOVIE INFORMATION
+========================================= */
+
+.details-content {
+padding-top: 5px;
+}
+
+.details-content h1 {
+margin: 0 0 15px;
+
+font-size: clamp(36px, 5vw, 58px);
+
+line-height: 1.05;
+
+letter-spacing: 1px;
+
+}
+
+/* Year */
+
+.details-content .year {
+color: #d4af37;
+
+font-size: 19px;
+
+font-weight: 600;
+
+margin: 0 0 12px;
+
+}
+
+/* Character */
+
+.details-content .character {
+color: #aaa;
+
+font-size: 18px;
+
+line-height: 1.6;
+
+margin: 0 0 30px;
+
+}
+
+/* =========================================
+WATCH MOVIE BUTTON
+========================================= */
+
+.watch-button {
+display: inline-flex;
+
+align-items: center;
+justify-content: center;
+
+gap: 10px;
+
+padding: 14px 28px;
+
+background: #d4af37;
+color: #000;
+
+border: 1px solid #d4af37;
+
+border-radius: 8px;
+
+font-size: 15px;
+font-weight: 700;
+
+cursor: pointer;
+
+transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+
+}
+
+.watch-button {
+background: #fff;
+border-color: #fff;
+
+transform: translateY(-2px);
+
+box-shadow:
+    0 8px 25px rgba(255, 255, 255, 0.12);
+
+}
+
+.watch-button {
+transform: scale(0.97);
+}
+
+/* =========================================
+MOVIE NOT FOUND
+========================================= */
+
+.movie-not-found {
+text-align: center;
+
+padding: 80px 20px;
+
+}
+
+.movie-not-found h1 {
+font-size: 40px;
+
+margin-bottom: 15px;
+
+}
+
+.movie-not-found p {
+color: #aaa;
+
+margin-bottom: 30px;
+
+}
+
+/* =========================================
+TABLET
+========================================= */
+
+@media (max-width: 850px) {
+
+.movie-details {
+    width: 92%;
+
+    margin-top: 40px;
+}
+
+.details-wrapper {
+    grid-template-columns: 260px 1fr;
+
+    gap: 30px;
+}
+
+.details-content h1 {
+    font-size: 40px;
+}
+
+}
+
+/* =========================================
+MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+
+.movie-details {
+    width: 92%;
+
+    margin: 30px auto 60px;
+
+    padding: 10px 0;
+}
+
+.details-wrapper {
+    grid-template-columns: 1fr;
+
+    gap: 30px;
+}
+
+.details-poster {
+    width: min(100%, 300px);
+
+    margin: 0 auto;
+}
+
+.details-content {
+    text-align: center;
+}
+
+.details-content h1 {
+    font-size: 34px;
+
+    line-height: 1.15;
+}
+
+.details-content .year {
+    font-size: 17px;
+}
+
+.details-content .character {
+    font-size: 16px;
+
+    margin-bottom: 25px;
+}
+
+.watch-button {
+    width: 100%;
+
+    max-width: 300px;
+}
+
+}
+
+/* =========================================
+SMALL PHONES
+========================================= */
+
+@media (max-width: 420px) {
+
+.details-content h1 {
+    font-size: 29px;
+}
+
+.watch-button {
+    max-width: 100%;
+}
+
+}

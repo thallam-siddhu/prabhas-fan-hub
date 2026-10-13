@@ -1,0 +1,246 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Songs Management | Prabhas Fan Hub</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/loading.css">
+    <link rel="stylesheet" href="css/owner.css">
+    <link rel="stylesheet" href="css/songs-admin.css">
+
+</head>
+
+<body>
+
+    <!-- Loading -->
+
+    <div id="appLoader" class="app-loader">
+
+        <div class="loader-content">
+
+            <div class="loader-ring"></div>
+
+            <p>PRABHAS FAN HUB</p>
+
+            <div class="loading-line">
+                <span></span>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Songs Management -->
+
+    <main class="owner-panel-page">
+
+        <section class="owner-panel">
+
+            <!-- Header -->
+
+            <div class="owner-panel-header">
+
+                <div>
+
+                    <p class="owner-label">
+                        PRIVATE AREA
+                    </p>
+
+                    <h1 id="pageTitle">
+                        Songs Management
+                    </h1>
+
+                    <p class="owner-welcome">
+                        Add and manage Prabhas songs
+                    </p>
+
+                </div>
+
+                <button
+                    type="button"
+                    id="backButton"
+                    class="logout-button">
+
+                    Back
+
+                </button>
+
+            </div>
+
+
+            <!-- Navigation -->
+
+            <div class="song-admin-navigation">
+
+                <button
+                    type="button"
+                    id="showAddSongButton"
+                    class="manage-button">
+
+                    Add Songs
+
+                </button>
+
+                <button
+                    type="button"
+                    id="showAllSongsButton"
+                    class="manage-button">
+
+                    All Songs
+
+                </button>
+
+            </div>
+
+
+            <!-- Add / Edit Song -->
+
+            <section
+                id="songFormSection"
+                class="song-admin-section">
+
+                <h2 id="songFormTitle">
+                    Add New Song
+                </h2>
+
+                <form
+                    id="songForm"
+                    enctype="multipart/form-data">
+
+                    <input
+                        type="hidden"
+                        id="songId">
+
+                    <label for="songTitle">
+                        Song Title
+                    </label>
+
+                    <input
+                        type="text"
+                        id="songTitle"
+                        name="title"
+                        placeholder="Enter song title"
+                        required>
+
+                    <label for="songMovie">
+                        Movie Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="songMovie"
+                        name="movie"
+                        placeholder="Enter movie name">
+
+                    <label for="songDescription">
+                        Description
+                    </label>
+
+                    <textarea
+                        id="songDescription"
+                        name="description"
+                        placeholder="Enter song description"
+                        rows="4"></textarea>
+
+                    <label for="audioFile">
+                        Song Audio (MP3, WAV, OGG, M4A or AAC)
+                    </label>
+
+                    <input
+                        type="file"
+                        id="audioFile"
+                        name="audioFile"
+                        accept=".mp3,.wav,.ogg,.m4a,.aac,audio/*">
+
+                    <small id="audioHelp">
+                        Audio is required when adding a new song.
+                    </small>
+
+                    <label for="coverFile">
+                        Cover Image (Optional)
+                    </label>
+
+                    <input
+                        type="file"
+                        id="coverFile"
+                        name="coverFile"
+                        accept="image/jpeg,image/png,image/webp">
+
+                    <div
+                        id="songFormMessage"
+                        class="song-form-message"
+                        role="status"
+                        aria-live="polite"></div>
+
+                    <button
+                        type="submit"
+                        id="saveSongButton"
+                        class="manage-button">
+
+                        Add Song
+
+                    </button>
+
+                    <button
+                        type="button"
+                        id="cancelEditButton"
+                        class="manage-button"
+                        hidden>
+
+                        Cancel Edit
+
+                    </button>
+
+                </form>
+
+            </section>
+
+
+            <!-- All Songs -->
+
+            <section
+                id="allSongsSection"
+                class="song-admin-section"
+                hidden>
+
+                <h2>
+                    All Songs
+                </h2>
+
+                <div
+                    id="songsListMessage"
+                    class="song-form-message"
+                    role="status"
+                    aria-live="polite"></div>
+
+                <div
+                    id="songsList"
+                    class="songs-admin-list">
+
+                </div>
+
+            </section>
+
+        </section>
+
+    </main>
+
+
+    <!-- Scripts -->
+
+    <script src="js/loading.js"></script>
+    <script src="js/songs-admin.js"></script>
+
+</body>
+
+</html>

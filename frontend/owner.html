@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Owner Login | Prabhas Fan Hub</title>
+
+
+    <!-- GLOBAL CSS -->
+
+    <link
+        rel="stylesheet"
+        href="css/style.css">
+
+
+    <!-- LOADING CSS -->
+
+    <link
+        rel="stylesheet"
+        href="css/loading.css">
+
+
+    <!-- OWNER LOGIN CSS -->
+
+    <link
+        rel="stylesheet"
+        href="css/owner.css">
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================
+     LOADING SCREEN
+========================================= -->
+
+<div
+    id="appLoader"
+    class="app-loader">
+
+    <div class="loader-content">
+
+        <div class="loader-ring"></div>
+
+        <p>
+            PRABHAS FAN HUB
+        </p>
+
+        <div class="loading-line">
+
+            <span></span>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================
+     OWNER LOGIN
+========================================= -->
+
+<main class="owner-page">
+
+
+    <div class="owner-login">
+
+
+        <!-- ICON -->
+
+        <div class="owner-icon">
+            🔐
+        </div>
+
+
+        <!-- LABEL -->
+
+        <p class="owner-label">
+            PRIVATE AREA
+        </p>
+
+
+        <!-- TITLE -->
+
+        <h1>
+            Owner Login
+        </h1>
+
+
+        <!-- DESCRIPTION -->
+
+        <p class="owner-description">
+
+            This area is restricted to the
+            Prabhas Fan Hub owner.
+
+        </p>
+
+
+        <!-- LOGIN FORM -->
+
+        <form
+            id="ownerLoginForm">
+
+
+            <!-- USERNAME -->
+
+            <div class="input-group">
+
+                <label
+                    for="ownerUsername">
+
+                    Username
+
+                </label>
+
+
+                <input
+                    type="text"
+                    id="ownerUsername"
+                    name="username"
+                    placeholder="Enter username"
+                    autocomplete="username"
+                    required>
+
+            </div>
+
+
+            <!-- PASSWORD -->
+
+            <div class="input-group">
+
+                <label
+                    for="ownerPassword">
+
+                    Password
+
+                </label>
+
+
+                <input
+                    type="password"
+                    id="ownerPassword"
+                    name="password"
+                    placeholder="Enter password"
+                    autocomplete="current-password"
+                    required>
+
+            </div>
+
+
+            <!-- LOGIN BUTTON -->
+
+            <button
+                type="submit"
+                class="owner-login-button">
+
+                Login
+
+            </button>
+
+
+            <!-- LOGIN MESSAGE -->
+
+            <p
+                id="loginMessage"
+                class="login-message">
+            </p>
+
+
+        </form>
+
+
+    </div>
+
+
+</main>
+
+
+<!-- =========================================
+     JAVASCRIPT
+========================================= -->
+
+<script src="js/loading.js"></script>
+
+<script src="js/owner.js"></script>
+
+
+</body>
+
+</html>

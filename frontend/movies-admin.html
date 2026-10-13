@@ -1,0 +1,585 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#080808">
+
+    <title>Movies Management | PRABHAS FAN HUB</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/loading.css">
+    <link rel="stylesheet" href="css/owner.css">
+
+    <style>
+        :root {
+            --gold: #d4af37;
+            --gold-light: #ffe58a;
+            --bg: #080808;
+            --card: #141414;
+            --muted: #a0a0a0;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--bg);
+        }
+
+        .owner-panel-page {
+            min-height: 100vh;
+            padding: 35px 15px;
+        }
+
+        .owner-panel {
+            width: min(100%, 1000px);
+            margin: auto;
+        }
+
+        .owner-panel-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .owner-label {
+            color: var(--gold);
+            letter-spacing: 3px;
+            font-size: 11px;
+            font-weight: 800;
+        }
+
+        .owner-panel-header h1 {
+            margin: 8px 0;
+            color: var(--gold-light);
+            font-size: clamp(30px, 5vw, 45px);
+        }
+
+        .owner-welcome {
+            color: var(--muted);
+        }
+
+        .management-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .management-card {
+            background: linear-gradient(145deg, #191919, #101010);
+            border: 1px solid #303030;
+            border-radius: 15px;
+            padding: 25px;
+            min-width: 0;
+        }
+
+        .management-card h2 {
+            color: var(--gold-light);
+            margin-top: 0;
+        }
+
+        .management-card > p,
+        .management-card .input-hint {
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        .management-icon {
+            font-size: 28px;
+            margin-bottom: 12px;
+        }
+
+        .input-group {
+            margin-bottom: 22px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 9px;
+            color: #f0f0f0;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .input-group input:not([type="file"]),
+        .input-group textarea,
+        .input-group select {
+            width: 100%;
+            padding: 13px 14px;
+            border: 1px solid #383838;
+            border-radius: 8px;
+            background: #0b0b0b;
+            color: white;
+            font: inherit;
+            outline: none;
+        }
+
+        .input-group input:focus,
+        .input-group textarea:focus,
+        .input-group select:focus {
+            border-color: var(--gold);
+        }
+
+        .input-group input[type="file"] {
+            width: 100%;
+            color: #ccc;
+            padding: 10px 0;
+        }
+
+        .input-hint {
+            font-size: 12px;
+            margin-top: 8px;
+        }
+
+        .link-help {
+            padding: 14px;
+            margin-top: 12px;
+            border: 1px solid #39301a;
+            border-radius: 8px;
+            background: #17140c;
+            color: #c8bd9c;
+            font-size: 12px;
+            line-height: 1.7;
+        }
+
+        .link-help strong {
+            color: var(--gold-light);
+        }
+
+        .manage-button,
+        .logout-button {
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        .manage-button:disabled {
+            opacity: 0.6;
+            cursor: wait;
+        }
+
+        .poster-preview {
+            display: none;
+            width: 180px;
+            max-width: 100%;
+            max-height: 270px;
+            margin-top: 12px;
+            object-fit: cover;
+            border: 1px solid #333;
+            border-radius: 8px;
+        }
+
+        .movie-admin-item {
+            padding: 25px 0;
+            border-top: 1px solid #303030;
+        }
+
+        .movie-admin-layout {
+            display: flex;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 22px;
+        }
+
+        .movie-admin-poster {
+            width: 145px;
+            height: 210px;
+            max-width: 100%;
+            object-fit: cover;
+            background: #080808;
+            border: 1px solid #333;
+            border-radius: 9px;
+        }
+
+        .movie-admin-details {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .movie-admin-details h3 {
+            color: white;
+            font-size: 22px;
+            margin: 0 0 10px;
+        }
+
+        .movie-admin-meta {
+            color: var(--gold);
+            font-size: 13px;
+        }
+
+        .movie-admin-description {
+            color: var(--muted);
+            line-height: 1.7;
+            overflow-wrap: anywhere;
+        }
+
+        .movie-admin-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .movie-admin-actions a,
+        .movie-admin-actions button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 15px;
+            border: 1px solid #444;
+            border-radius: 7px;
+            background: transparent;
+            color: white;
+            text-decoration: none;
+            font-size: 13px;
+            cursor: pointer;
+        }
+
+        .movie-admin-actions .watch-link {
+            color: var(--gold-light);
+            border-color: var(--gold);
+        }
+
+        .movie-admin-actions .edit-button {
+            color: var(--gold);
+            border-color: var(--gold);
+        }
+
+        .movie-admin-actions .delete-button {
+            color: #ff7777;
+            border-color: #7a2b2b;
+        }
+
+        .movie-message {
+            margin-top: 16px;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 600px) {
+            .owner-panel-page {
+                padding: 22px 12px;
+            }
+
+            .management-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .management-card {
+                padding: 18px;
+            }
+
+            .owner-panel-header {
+                align-items: flex-start;
+            }
+
+            .movie-admin-poster {
+                width: 115px;
+                height: 170px;
+            }
+
+            .movie-admin-layout {
+                gap: 14px;
+            }
+
+            .movie-admin-details {
+                min-width: 140px;
+            }
+
+            .movie-admin-details h3 {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- LOADING SCREEN -->
+
+    <div id="appLoader" class="app-loader">
+        <div class="loader-content">
+            <div class="loader-ring"></div>
+            <p>PRABHAS FAN HUB</p>
+            <div class="loading-line">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- MOVIE MANAGEMENT -->
+
+    <main class="owner-panel-page">
+        <section class="owner-panel">
+
+            <header class="owner-panel-header">
+                <div>
+                    <p class="owner-label">CONTENT MANAGEMENT</p>
+                    <h1>Movies</h1>
+                    <p class="owner-welcome">
+                        Manage the PRABHAS FAN HUB movie collection.
+                    </p>
+                </div>
+
+                <button
+                    type="button"
+                    id="backButton"
+                    class="logout-button">
+                    Back
+                </button>
+            </header>
+
+            <!-- MAIN OPTIONS -->
+
+            <div id="movieOptions" class="management-grid">
+
+                <article class="management-card">
+                    <div class="management-icon">＋</div>
+                    <h2>Add Movie</h2>
+                    <p>Add a movie poster, details and watch link.</p>
+
+                    <button
+                        type="button"
+                        id="addMovieButton"
+                        class="manage-button">
+                        Add Movie
+                    </button>
+                </article>
+
+                <article class="management-card">
+                    <div class="management-icon">🎬</div>
+                    <h2>All Movies</h2>
+                    <p>View, edit or delete movies in your collection.</p>
+
+                    <button
+                        type="button"
+                        id="allMoviesButton"
+                        class="manage-button">
+                        All Movies
+                    </button>
+                </article>
+
+            </div>
+
+            <!-- ADD / EDIT MOVIE -->
+
+            <section
+                id="addMovieSection"
+                class="management-card"
+                style="display: none; margin-top: 25px;">
+
+                <h2 id="movieFormTitle">Add New Movie</h2>
+
+                <form id="movieForm" enctype="multipart/form-data">
+
+                    <div class="input-group">
+                        <label for="movieName">Movie Name</label>
+                        <input
+                            type="text"
+                            id="movieName"
+                            name="name"
+                            placeholder="Enter movie name"
+                            maxlength="150"
+                            required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="movieYear">Release Year</label>
+                        <input
+                            type="number"
+                            id="movieYear"
+                            name="year"
+                            placeholder="Example: 2002"
+                            min="1900"
+                            max="2100"
+                            required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="movieCharacter">Character</label>
+                        <input
+                            type="text"
+                            id="movieCharacter"
+                            name="character"
+                            placeholder="Example: Eeswar"
+                            maxlength="150"
+                            required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="moviePoster">Movie Poster</label>
+
+                        <input
+                            type="file"
+                            id="moviePoster"
+                            name="posterFile"
+                            accept="image/jpeg,image/png,image/webp"
+                            required>
+
+                        <p class="input-hint">
+                            JPG, PNG or WebP. Maximum size: 5 MB.
+                            When editing, leave this empty to keep the current poster.
+                        </p>
+
+                        <img
+                            id="posterPreview"
+                            class="poster-preview"
+                            src=""
+                            alt="Movie poster preview">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="movieDescription">Description</label>
+                        <textarea
+                            id="movieDescription"
+                            name="description"
+                            rows="5"
+                            maxlength="3000"
+                            placeholder="Enter movie description"
+                            required></textarea>
+                    </div>
+
+                    <!-- WATCH LINK TYPE -->
+
+                    <div class="input-group">
+                        <label for="movieLinkType">Watch Link Type</label>
+
+                        <select id="movieLinkType" name="linkType">
+                            <option value="youtube">YouTube</option>
+                            <option value="external">Other Website</option>
+                        </select>
+
+                        <p class="input-hint">
+                            Choose the type of link you want users to open.
+                        </p>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="movieLink">Movie / Video URL</label>
+
+                        <input
+                            type="url"
+                            id="movieLink"
+                            name="link"
+                            placeholder="https://www.youtube.com/watch?v=..."
+                            maxlength="2048"
+                            autocomplete="url"
+                            required>
+
+                        <div class="link-help" id="movieLinkHelp">
+                            <strong>YouTube selected</strong><br>
+                            Paste a YouTube video URL. The Movies page will
+                            attempt to open it in the video player and request
+                            fullscreen.
+                        </div>
+                    </div>
+
+                    <button
+                        type="submit"
+                        id="saveMovieButton"
+                        class="manage-button">
+                        Add Movie
+                    </button>
+
+                    <button
+                        type="button"
+                        id="cancelMovieButton"
+                        class="logout-button"
+                        style="margin-left: 10px;">
+                        Cancel
+                    </button>
+
+                    <p
+                        id="movieMessage"
+                        class="movie-message"
+                        role="status"
+                        aria-live="polite"></p>
+
+                </form>
+            </section>
+
+            <!-- ALL MOVIES -->
+
+            <section
+                id="allMoviesSection"
+                class="management-card"
+                style="display: none; margin-top: 25px;">
+
+                <h2>All Movies</h2>
+
+                <div id="moviesList">
+                    <p class="movie-message">Loading movies...</p>
+                </div>
+
+            </section>
+
+        </section>
+    </main>
+
+    <script src="js/loading.js"></script>
+    <script src="js/movies-admin.js"></script>
+
+    <!-- LINK TYPE HELPER -->
+
+    <script>
+        const movieLinkType = document.getElementById("movieLinkType");
+        const movieLink = document.getElementById("movieLink");
+        const movieLinkHelp = document.getElementById("movieLinkHelp");
+
+        function updateMovieLinkHelp() {
+            if (movieLinkType.value === "youtube") {
+                movieLink.placeholder =
+                    "https://www.youtube.com/watch?v=...";
+
+                movieLinkHelp.innerHTML = `
+                    <strong>YouTube selected</strong><br>
+                    Paste a YouTube video URL. The Movies page will
+                    attempt to open it in the video player and request
+                    fullscreen.
+                `;
+            } else {
+                movieLink.placeholder = "https://example.com/movie";
+
+                movieLinkHelp.innerHTML = `
+                    <strong>Other website selected</strong><br>
+                    Paste the full movie or video URL. Some websites
+                    block embedded playback and may need to open
+                    directly on their own website.
+                `;
+            }
+        }
+
+        movieLinkType.addEventListener("change", updateMovieLinkHelp);
+
+        // The existing backend uses the "link" field.
+        // The selected type is inferred from the saved URL when editing.
+        movieLink.addEventListener("input", function () {
+            try {
+                const host = new URL(movieLink.value).hostname.toLowerCase();
+
+                if (
+                    host === "youtube.com" ||
+                    host.endsWith(".youtube.com") ||
+                    host === "youtu.be"
+                ) {
+                    movieLinkType.value = "youtube";
+                } else if (host) {
+                    movieLinkType.value = "external";
+                }
+
+                updateMovieLinkHelp();
+            } catch {
+                // Do not change the selection while the URL is incomplete.
+            }
+        });
+
+        updateMovieLinkHelp();
+    </script>
+
+</body>
+</html>

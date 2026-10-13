@@ -1,0 +1,187 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#080808">
+
+    <title>Wallpapers Management | Prabhas Fan Hub</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/loading.css">
+    <link rel="stylesheet" href="css/owner.css">
+    <link rel="stylesheet" href="css/wallpapers-admin.css">
+</head>
+
+<body>
+
+    <!-- Loading Screen -->
+    <div id="appLoader" class="app-loader">
+        <div class="loader-content">
+            <div class="loader-ring"></div>
+            <p>PRABHAS FAN HUB</p>
+            <div class="loading-line">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Wallpapers Admin -->
+    <main class="wallpaper-admin-page">
+
+        <header class="wallpaper-admin-header">
+            <div>
+                <p class="owner-label">PRIVATE AREA</p>
+                <h1>Wallpapers Management</h1>
+                <p>Upload and manage Prabhas wallpapers.</p>
+            </div>
+
+            <button
+                type="button"
+                id="backButton"
+                class="manage-button">
+                Owner Panel
+            </button>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="wallpaper-admin-nav">
+            <button
+                type="button"
+                id="showAddButton"
+                class="wallpaper-nav-button">
+                + Add Wallpapers
+            </button>
+
+            <button
+                type="button"
+                id="showAllButton"
+                class="wallpaper-nav-button">
+                All Wallpapers
+            </button>
+        </nav>
+
+        <!-- Status Message -->
+        <p
+            id="statusMessage"
+            class="wallpaper-status"
+            role="status"
+            aria-live="polite">
+        </p>
+
+        <!-- Add Wallpaper Section -->
+        <section
+            id="addWallpaperSection"
+            class="wallpaper-admin-section">
+
+            <h2>Add New Wallpaper</h2>
+
+            <form id="wallpaperForm" enctype="multipart/form-data">
+
+                <label for="wallpaperTitle">
+                    Wallpaper Title
+                </label>
+
+                <input
+                    type="text"
+                    id="wallpaperTitle"
+                    name="title"
+                    placeholder="Example: Baahubali Look"
+                    maxlength="120"
+                    required>
+
+                <label for="wallpaperCategory">
+                    Category
+                </label>
+
+                <input
+                    type="text"
+                    id="wallpaperCategory"
+                    name="category"
+                    placeholder="Example: Baahubali, Salaar, Kalki"
+                    maxlength="80">
+
+                <label for="wallpaperDescription">
+                    Description
+                </label>
+
+                <textarea
+                    id="wallpaperDescription"
+                    name="description"
+                    placeholder="Write a short description"
+                    maxlength="500"
+                    rows="4">
+                </textarea>
+
+                <label for="wallpaperImage">
+                    Select Wallpaper Image
+                </label>
+
+                <input
+                    type="file"
+                    id="wallpaperImage"
+                    name="wallpaperFile"
+                    accept="image/jpeg,image/png,image/webp"
+                    required>
+
+                <p class="wallpaper-help">
+                    Supported formats: JPG, PNG and WebP. Maximum size: 10 MB.
+                </p>
+
+                <div
+                    id="imagePreviewContainer"
+                    class="wallpaper-preview-container"
+                    hidden>
+
+                    <img
+                        id="imagePreview"
+                        alt="Selected wallpaper preview">
+
+                </div>
+
+                <button
+                    type="submit"
+                    id="uploadWallpaperButton"
+                    class="manage-button">
+                    Upload Wallpaper
+                </button>
+
+            </form>
+
+        </section>
+
+        <!-- All Wallpapers Section -->
+        <section
+            id="allWallpapersSection"
+            class="wallpaper-admin-section"
+            hidden>
+
+            <div class="wallpaper-list-heading">
+                <h2>All Wallpapers</h2>
+
+                <button
+                    type="button"
+                    id="refreshWallpapersButton"
+                    class="manage-button">
+                    Refresh
+                </button>
+            </div>
+
+            <p id="wallpaperCount">Loading wallpapers...</p>
+
+            <div
+                id="wallpaperGrid"
+                class="wallpaper-admin-grid">
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="js/loading.js"></script>
+    <script src="js/wallpapers-admin.js"></script>
+
+</body>
+</html>
